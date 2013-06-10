@@ -3,9 +3,10 @@ tombstones
 
 Python script to retrieve line info from an android tombstone using ndk-stack and addr2line
 
+<pre>
 run:
 
-$ python tombstones.py [args]
+  $ python tombstones.py [args]
 
 args:
   -h, --help            show this help message and exit
@@ -18,4 +19,4 @@ args:
                         target architecture
   -a ADDR2LINE, --addr2line=ADDR2LINE
                         addr2line path
-
+</pre>
