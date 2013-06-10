@@ -13,11 +13,11 @@ import subprocess
 # add options
 parser = optparse.OptionParser()
 parser.add_option('-n', '--ndk', dest='ndk', help='NDK ROOT')
-parser.add_option('-t', '--tomb', dest='tomb', help='tombstone file')
-parser.add_option('-s', '--sym', dest='sym', help='SYM ROOT')
+parser.add_option('-t', '--tomb', dest='tomb', help='path to tombstone file')
+parser.add_option('-s', '--sym', dest='sym', help='SYM ROOT: path to sym file root dir')
 parser.add_option('-o', '--obfile', dest='obfile', help='obfile file (.so)')
-parser.add_option('-g', '--target', dest='target', help='target architecture')
-parser.add_option('-a', '--addr2line', dest='addr2line', help='addr2line path')
+parser.add_option('-g', '--target', dest='target', help='android target architecture')
+parser.add_option('-a', '--addr2line', dest='addr2line', help='addr2line path w/o NDK path')
 # parse
 (options, args) = parser.parse_args()
 
@@ -42,8 +42,6 @@ else:
 			temp = line[i : i+8]
 			lines.append( temp)
 
-	#lines = " ".join( lines)
-	
 	addr2line = "%s/%s" %( options.ndk, options.addr2line)
 	obfile = "%s/%s/%s" %( options.sym, options.target, options.obfile)
 	args = [ addr2line, "-Cfsp", "-e", obfile ] + lines
