@@ -32,7 +32,7 @@ else:
 	# get stack trace from tombstone
 	#NDK_ROOT/ndk-stack -sym SYM_ROOT -dump tombstone
 	ndkstack = "%s/%s" %( options.ndk, "ndk-stack")
-	call = "%s -sym %s -dump %s" %( ndkstack, options.sym, options.tomb)
+#	call = "%s -sym %s -dump %s" %( ndkstack, options.sym, options.tomb)
 	args = ( ndkstack, "-sym", options.sym, "-dump", options.tomb )
 	proc = subprocess.Popen( args, stdout=subprocess.PIPE)
 	lines = []
@@ -49,4 +49,5 @@ else:
 	
 	for line in proc.stdout.readlines():
 		print line[:-1]
+	print "\n"
 
