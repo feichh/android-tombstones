@@ -18,6 +18,7 @@ parser.add_option('-s', '--sym', dest='sym', help='SYM ROOT: path to sym file ro
 parser.add_option('-o', '--obfile', dest='obfile', help='obfile file (.so)')
 parser.add_option('-g', '--target', dest='target', help='android target architecture')
 parser.add_option('-a', '--addr2line', dest='addr2line', help='addr2line path w/o NDK path')
+parser.add_option('-v', '--verbose', action='store_true', dest='verbose', help='verbose output')
 # parse
 (options, args) = parser.parse_args()
 
@@ -34,6 +35,8 @@ else:
 	ndkstack = "%s/%s" %( options.ndk, "ndk-stack")
 #	call = "%s -sym %s -dump %s" %( ndkstack, options.sym, options.tomb)
 	args = ( ndkstack, "-sym", options.sym, "-dump", options.tomb )
+	if options.verbose:
+		print "running args: %s" %( str( args))
 	proc = subprocess.Popen( args, stdout=subprocess.PIPE)
 	lines = []
 	for line in proc.stdout.readlines():
@@ -45,6 +48,8 @@ else:
 	addr2line = "%s/%s" %( options.ndk, options.addr2line)
 	obfile = "%s/%s/%s" %( options.sym, options.target, options.obfile)
 	args = [ addr2line, "-Cfsp", "-e", obfile ] + lines
+	if options.verbose:
+		print "running args: %s" %( str( args))
 	proc = subprocess.Popen( args, stdout=subprocess.PIPE)
 	
 	for line in proc.stdout.readlines():
