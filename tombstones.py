@@ -12,11 +12,11 @@ import subprocess
 
 # add options
 parser = optparse.OptionParser()
-parser.add_option('-n', '--ndk', dest='ndk', help='NDK ROOT')
-parser.add_option('-t', '--tomb', dest='tomb', help='path to tombstone file')
-parser.add_option('-s', '--sym', dest='sym', help='SYM ROOT: path to sym file root dir')
-parser.add_option('-o', '--obfile', dest='obfile', help='obfile file (.so)')
-parser.add_option('-g', '--target', dest='target', help='android target architecture')
+parser.add_option('-n', '--ndk', dest='ndk', help='NDK ROOT path to your NDK installation')
+parser.add_option('-t', '--tomb', dest='tomb', help='path to the tombstone file')
+parser.add_option('-s', '--sym', dest='sym', help='SYM ROOT: path to sym file root dir (where the obfile lies)')
+parser.add_option('-o', '--obfile', dest='obfile', help='object file name (e.g. .so containing debug symbols)')
+parser.add_option('-g', '--target', dest='target', help='android target architecture (armeabi armeabi-v7a ...)')
 parser.add_option('-a', '--addr2line', dest='addr2line', help='addr2line path w/o NDK path')
 parser.add_option('-v', '--verbose', action='store_true', dest='verbose', help='verbose output')
 # parse
