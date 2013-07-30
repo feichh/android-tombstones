@@ -8,15 +8,18 @@ run:
 
   $ python tombstones.py [args]
 
-args:
+Options:
   -h, --help            show this help message and exit
-  -n NDK, --ndk=NDK     NDK ROOT
-  -t TOMB, --tomb=TOMB  tombstone file
-  -s SYM, --sym=SYM     SYM ROOT
+  -n NDK, --ndk=NDK     NDK ROOT path to your NDK installation
+  -t TOMB, --tomb=TOMB  path to the tombstone file
+  -s SYM, --sym=SYM     SYM ROOT: path to sym file root dir (where the obfile
+                        lies)
   -o OBFILE, --obfile=OBFILE
-                        obfile file (.so)
+                        object file name (e.g. .so containing debug symbols)
   -g TARGET, --target=TARGET
-                        target architecture
+                        android target architecture (armeabi armeabi-v7a ...)
   -a ADDR2LINE, --addr2line=ADDR2LINE
-                        addr2line path
+                        addr2line path w/o NDK path
+  -v, --verbose         verbose output
+
 </pre>
